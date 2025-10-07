@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkyGuide — Itinerary Planner</title>
+  </head>
+
+  <body class="antialiased">
+    <div id="site" class="min-h-screen bg-gradient-to-b from-sky-50 via-white to-white dark:from-slate-950">
+      <header class="sticky top-0 z-40 backdrop-blur bg-white/70 dark:bg-slate-950/60 border-b border-slate-200/70 dark:border-slate-800/70">
+        <div class="mx-auto max-w-7xl px-6 py-3 flex items-center justify-between">
+          <a href="/index.html" class="flex items-center gap-2 text-slate-900 dark:text-white font-bold">
+            <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-sky-500 to-cyan-400 text-white shadow">✈️</span>
+            <span>SkyGuide</span>
+          </a>
+          <nav class="hidden md:flex items-center gap-6 text-sm">
+            <a href="/index.html" class="px-3 py-2 rounded-md bg-sky-100 text-sky-700">Itinerary</a>
+            <a href="/packing.html" class="px-3 py-2 rounded-md text-slate-600 hover:text-sky-600">Packing</a>
+            <a href="/chat.html" class="px-3 py-2 rounded-md text-slate-600 hover:text-sky-600">Chat</a>
+          </nav>
+          <div class="hidden md:block">
+            <a href="/chat.html" class="inline-flex items-center justify-center rounded-lg bg-sky-600 text-white px-3 py-2 text-sm font-medium shadow hover:bg-sky-700">Ask SkyGuide</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="mx-auto max-w-4xl px-6 py-12">
+        <header class="mb-6">
+          <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white">Itinerary Planner</h1>
+          <p class="mt-2 text-slate-600 dark:text-slate-300">Create day-by-day plans tailored to your trip.</p>
+        </header>
+
+        <section id="planner" class="space-y-4">
+          <form id="planner-form" class="rounded-xl border border-slate-200 bg-white/70 backdrop-blur p-4 shadow-sm dark:bg-slate-900/60 dark:border-slate-800">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="text-sm font-medium text-slate-600 dark:text-slate-300">From</label>
+                <input id="origin" placeholder="Starting city or airport (e.g., LAX, Los Angeles)" class="mt-1 w-full rounded-lg border border-slate-300/80 bg-white px-3 py-2 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500/60 dark:bg-slate-950 dark:text-slate-100 dark:border-slate-800" />
+
+                <label class="text-sm font-medium text-slate-600 dark:text-slate-300 mt-3 block">Destination</label>
+                <input id="destination" required placeholder="e.g., Tokyo, Japan" class="mt-1 w-full rounded-lg border border-slate-300/80 bg-white px-3 py-2 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500/60 dark:bg-slate-950 dark:text-slate-100 dark:border-slate-800" />
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="text-sm font-medium text-slate-600 dark:text-slate-300">Start</label>
+                  <input id="startDate" type="date" class="mt-1 w-full rounded-lg border border-slate-300/80 bg-white px-3 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500/60 dark:bg-slate-950 dark:text-slate-100 dark:border-slate-800" />
+                </div>
+                <div>
+                  <label class="text-sm font-medium text-slate-600 dark:text-slate-300">End</label>
+                  <input id="endDate" type="date" class="mt-1 w-full rounded-lg border border-slate-300/80 bg-white px-3 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500/60 dark:bg-slate-950 dark:text-slate-100 dark:border-slate-800" />
+                </div>
+              </div>
+
+              <div>
+                <label class="text-sm font-medium text-slate-600 dark:text-slate-300">Interests</label>
+                <input id="interests" placeholder="food, museums, nightlife" class="mt-1 w-full rounded-lg border border-slate-300/80 bg-white px-3 py-2 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500/60 dark:bg-slate-950 dark:text-slate-100 dark:border-slate-800" />
+              </div>
+
+              <div class="grid grid-cols-3 gap-3">
+                <div>
+                  <label class="text-sm font-medium text-slate-600 dark:text-slate-300">Budget</label>
+                  <select id="budget" class="mt-1 w-full rounded-lg border border-slate-300/80 bg-white px-3 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500/60 dark:bg-slate-950 dark:text-slate-100 dark:border-slate-800">
+                    <option value="budget">Budget</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="luxury">Luxury</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="text-sm font-medium text-slate-600 dark:text-slate-300">Travelers</label>
+                  <input id="travelers" type="number" min="1" value="1" class="mt-1 w-full rounded-lg border border-slate-300/80 bg-white px-3 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500/60 dark:bg-slate-950 dark:text-slate-100 dark:border-slate-800" />
+                </div>
+                <div>
+                  <label class="text-sm font-medium text-slate-600 dark:text-slate-300">Days</label>
+                  <input id="days" type="number" min="0" placeholder="auto" class="mt-1 w-full rounded-lg border border-slate-300/80 bg-white px-3 py-2 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500/60 dark:bg-slate-950 dark:text-slate-100 dark:border-slate-800" />
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 flex items-center justify-between gap-3">
+              <p class="text-sm text-slate-500">SkyGuide crafts realistic, personalized itineraries.</p>
+              <button id="plan-btn" type="submit" class="inline-flex items-center justify-center rounded-lg bg-sky-600 text-white px-4 py-2 font-medium shadow hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500">Plan Itinerary</button>
+            </div>
+            <p id="plan-error" class="mt-2 text-sm text-red-600 hidden"></p>
+          </form>
+
+          <div id="itinerary-result" class="mt-4 rounded-xl border border-slate-200 bg-white/70 backdrop-blur p-4 shadow-sm dark:bg-slate-900/60 dark:border-slate-800 hidden">
+            <div class="px-4 py-3 border-b border-slate-200/70 dark:border-slate-800/70">
+              <h3 class="text-sm font-semibold tracking-wide text-slate-700 dark:text-slate-200">Itinerary</h3>
+            </div>
+            <div class="p-4">
+              <pre id="itinerary-text" class="whitespace-pre-wrap leading-relaxed text-[15px] text-slate-800 dark:text-slate-100"></pre>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module">
+      import '/client/global.css';
+      import '/client/static/itinerary.js';
+    </script>
+  </body>
+</html>
